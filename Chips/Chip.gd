@@ -32,6 +32,15 @@ func set_texture(var num):
 			sprite.texture = chip3_text
 
 func _ready():
+	if type == 1:
+		name = "CHIP_" + type as String + "_" + arrayPivots.index[0] as String
+		arrayPivots.index[0] += 1
+	elif type == 2:
+		name = "CHIP_" + type as String + "_" + arrayPivots.index[1] as String
+		arrayPivots.index[1] += 1
+	elif type == 3:
+		name = "CHIP_" + type as String + "_" + arrayPivots.index[2] as String
+		arrayPivots.index[2] += 1
 	set_texture(type)
 	set_process(false)
 
@@ -57,15 +66,30 @@ func get_input_direction():
 
 func move(var target, var direction):
 	set_process(false)
+	
+	check_mission(pos.x, -1)
+	
 	animationPlayer.play("Walk")
-	tween.interpolate_property(position2d, "position", -direction*108, Vector2(), animationPlayer.current_animation_length, tween.TRANS_LINEAR, tween.EASE_IN)
+	tween.interpolate_property(position2d, "position", -direction*108, Vector2(), 
+							   animationPlayer.current_animation_length, tween.TRANS_LINEAR, tween.EASE_IN)
 	
 	position = target.position
 	arrayPivots.pivots[pos.x + pos.y*5].nodeType = "FREE"
 	pos = target.pos
 	target.nodeType = type as String
+	
+	check_mission(pos.x, 1)
+	
 	#yield(animationPlayer, "animation_finished")
 	set_process(true)
+
+func check_mission(var index, var value):
+	if index == 0 and type == arrayPivots.targets[0]:
+		arrayPivots.progress[0] += value
+	if index == 2 and type == arrayPivots.targets[1]:
+		arrayPivots.progress[1] += value
+	if index == 4 and type == arrayPivots.targets[2]:
+		arrayPivots.progress[2] += value
 
 func bloom():
 	set_process(false)
