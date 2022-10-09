@@ -1,21 +1,37 @@
 extends Node2D
 
-onready var childs: Array = get_children()
 onready var Chip = preload("res://Chips/Chip.tscn")
 
 var chips: Array = [1,1,1,1,1, 2,2,2,2,2, 3,3,3,3,3, 0,0,0,0]
+var targets: Array = [1,2,3]
+
+var arrayPivots = ArrayPivots
 
 func _ready():
+	arrayPivots.pivots.append_array(get_children())
 	set_random()
 
 func set_random():
 	randomize()
 	chips.shuffle()
+	targets.shuffle()
 	var i: int = 0
-	for pivot in childs:
+	for pivot in arrayPivots.pivots:
 		if pivot.nodeType != "BLOCK" and i != chips.size():
 			if chips[i] != 0:
 				var chip = Chip.instance()
 				chip.type = chips[i]
-				pivot.add_child(chip)
+				chip.pos = pivot.pos
+				add_child(chip)
+				chip.position = pivot.position
+				pivot.nodeType = "CHIP_" + chips[i] as String
 			i += 1
+	
+	for j in 3:
+		var chip = Chip.instance()
+		chip.type = targets[j]
+		var pivot = get_node(j as String)
+		chip.blocked = true
+		add_child(chip)
+		chip.position = pivot.position 
+		pivot.nodeType = "CHIP_" + targets[j] as String

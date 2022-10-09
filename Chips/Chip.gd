@@ -1,10 +1,13 @@
 extends Node2D
 
+onready var position2d = $Position2D
 onready var sprite: Sprite = $Position2D/Sprite
 onready var chip1_text = preload("res://Chips/Chip1.tres")
 onready var chip2_text = preload("res://Chips/Chip2.tres")
 onready var chip3_text = preload("res://Chips/Chip3.tres")
 onready var timer = $Timer
+onready var animationPlayer = $AnimationPlayer
+onready var tween = $Tween
 
 enum Types{
 	CHIP_1,
@@ -13,9 +16,11 @@ enum Types{
 }
 var type = Types.CHIP_1
 
+var arrayPivots = ArrayPivots
+
 var pos = Vector2.ZERO
-var target = Vector2.ZERO
 var selected = false
+var blocked = false
 
 func set_texture(var num):
 	match num:
@@ -28,26 +33,72 @@ func set_texture(var num):
 
 func _ready():
 	set_texture(type)
+	set_process(false)
 
-func move():
-	pass
+# warning-ignore:unused_argument
+func _process(delta):
+	var input_direction = get_input_direction()
+	if !input_direction:
+		return
+	var target = input_direction + pos
+	target = clamp_vector(target, Vector2(0,0), Vector2(4,4))
+	var pivot = arrayPivots.pivots[target.x + target.y*5]
+	if pivot.nodeType == "FREE":
+		move(pivot, input_direction)
+	else:
+		bloom()
+
+
+func get_input_direction():
+	return Vector2(
+		int(Input.is_action_just_pressed("ui_right")) - int(Input.is_action_just_pressed("ui_left")),
+		int(Input.is_action_just_pressed("ui_down")) - int(Input.is_action_just_pressed("ui_up"))
+	)
+
+func move(var target, var direction):
+	set_process(false)
+	animationPlayer.play("Walk")
+	tween.interpolate_property(position2d, "position", -direction*108, Vector2(), animationPlayer.current_animation_length, tween.TRANS_LINEAR, tween.EASE_IN)
+	
+	position = target.position
+	arrayPivots.pivots[pos.x + pos.y*5].nodeType = "FREE"
+	pos = target.pos
+	target.nodeType = type as String
+	#yield(animationPlayer, "animation_finished")
+	set_process(true)
 
 func bloom():
-	pass
+	set_process(false)
+	animationPlayer.play("Bloom")
+	#yield(animationPlayer,"animation_finished")
+	set_process(true)
 
 
+#выделение объекта через ЛКМ
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_released("l_mouse") and timer.is_stopped():
+	if Input.is_action_just_released("l_mouse") and timer.is_stopped() and !blocked:
 		selected = true
 		modulate.r += 0.5
 		modulate.g += 0.5
 		modulate.b += 0.5
+		set_process(true)
 		timer.start()
 
+#снятие выделения через ЛКМ
+# warning-ignore:unused_argument
 func _unhandled_input(event):
 	if Input.is_action_just_released("l_mouse") and selected == true and timer.is_stopped():
 		selected = false
 		modulate.r -= 0.5
 		modulate.g -= 0.5
 		modulate.b -= 0.5
+		set_process(false)
 		timer.start()
+
+func clamp_vector(var vector, var start, var end):
+	vector.x = clamp(vector.x, start.x, end.x)
+	vector.y = clamp(vector.y, start.y, end.y)
+	return vector

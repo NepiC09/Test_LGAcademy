@@ -25,193 +25,126 @@ __meta__ = {
 }
 
 [node name="backchips" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 0, 64 )
 
 [node name="FreeChip" type="Sprite" parent="backchips"]
 position = Vector2( 393, 138 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip2" type="Sprite" parent="backchips"]
 position = Vector2( 503, 138 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip3" type="Sprite" parent="backchips"]
 position = Vector2( 613, 138 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip4" type="Sprite" parent="backchips"]
 position = Vector2( 723, 138 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip5" type="Sprite" parent="backchips"]
 position = Vector2( 833, 138 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip11" type="Sprite" parent="backchips"]
 position = Vector2( 393, 248 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip12" type="Sprite" parent="backchips"]
 position = Vector2( 503, 248 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip13" type="Sprite" parent="backchips"]
 position = Vector2( 613, 248 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip14" type="Sprite" parent="backchips"]
 position = Vector2( 723, 248 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip15" type="Sprite" parent="backchips"]
 position = Vector2( 833, 248 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip16" type="Sprite" parent="backchips"]
 position = Vector2( 393, 358 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip17" type="Sprite" parent="backchips"]
 position = Vector2( 503, 358 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip18" type="Sprite" parent="backchips"]
 position = Vector2( 503, 358 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip19" type="Sprite" parent="backchips"]
 position = Vector2( 613, 358 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip20" type="Sprite" parent="backchips"]
 position = Vector2( 723, 358 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip21" type="Sprite" parent="backchips"]
 position = Vector2( 833, 358 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip22" type="Sprite" parent="backchips"]
 position = Vector2( 833, 468 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip23" type="Sprite" parent="backchips"]
 position = Vector2( 723, 468 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip24" type="Sprite" parent="backchips"]
 position = Vector2( 613, 468 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip25" type="Sprite" parent="backchips"]
 position = Vector2( 503, 468 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip26" type="Sprite" parent="backchips"]
 position = Vector2( 393, 468 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip27" type="Sprite" parent="backchips"]
 position = Vector2( 393, 578 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip28" type="Sprite" parent="backchips"]
 position = Vector2( 503, 578 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip29" type="Sprite" parent="backchips"]
 position = Vector2( 613, 578 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip30" type="Sprite" parent="backchips"]
 position = Vector2( 723, 578 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="FreeChip31" type="Sprite" parent="backchips"]
 position = Vector2( 833, 578 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="FreeChip6" type="Sprite" parent="backchips"]
+position = Vector2( 393, 2 )
+texture = ExtResource( 4 )
+
+[node name="FreeChip7" type="Sprite" parent="backchips"]
+position = Vector2( 613, 2 )
+texture = ExtResource( 4 )
+
+[node name="FreeChip8" type="Sprite" parent="backchips"]
+position = Vector2( 833, 2 )
+texture = ExtResource( 4 )
 
 [node name="Grid" type="Node2D" parent="."]
+position = Vector2( 0, 64 )
 script = ExtResource( 1 )
 
 [node name="0_0" type="Position2D" parent="Grid"]
@@ -319,3 +252,18 @@ nodeType = "BLOCK"
 [node name="4_4" type="Position2D" parent="Grid"]
 position = Vector2( 833, 578 )
 script = ExtResource( 2 )
+
+[node name="0" type="Position2D" parent="Grid"]
+position = Vector2( 393, 2 )
+script = ExtResource( 2 )
+nodeType = ""
+
+[node name="1" type="Position2D" parent="Grid"]
+position = Vector2( 613, 2 )
+script = ExtResource( 2 )
+nodeType = ""
+
+[node name="2" type="Position2D" parent="Grid"]
+position = Vector2( 833, 2 )
+script = ExtResource( 2 )
+nodeType = ""
