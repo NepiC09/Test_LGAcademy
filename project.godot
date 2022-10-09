@@ -11,11 +11,19 @@ config_version=4
 [application]
 
 config/name="Test_LGAcademy"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://Themes/Default_Theme.tres"
+theme/custom_font="res://Fonts/Default_Font.tres"
 
 [physics]
 
@@ -23,4 +31,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Themes/default_env.tres"
