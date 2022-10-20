@@ -2,9 +2,10 @@ extends Node2D
 
 onready var position2d = $Position2D
 onready var sprite: Sprite = $Position2D/Sprite
-onready var chip1_text = preload("res://Chips/Chip1.tres")
-onready var chip2_text = preload("res://Chips/Chip2.tres")
-onready var chip3_text = preload("res://Chips/Chip3.tres")
+
+onready var chip1_text = preload("res://Chips/img/Chip-01.png")
+onready var chip2_text = preload("res://Chips/img/Chip-02.png")
+onready var chip3_text = preload("res://Chips/img/Chip-03.png")
 onready var timer = $Timer
 onready var animationPlayer = $AnimationPlayer
 onready var tween = $Tween

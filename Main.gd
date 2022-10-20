@@ -6,8 +6,8 @@ onready var fade = $Fade
 onready var timeContainer = $TimeContainer
 
 var arrayPivots = ArrayPivots
-var scoreTablePath = "res://ScoreTable.json"
-var scoreTable: Array
+var scoreTablePath = "user://ScoreTable.json"
+var scoreTable: Array = []
 
 func _ready():
 	arrayPivots.main = self
@@ -15,14 +15,14 @@ func _ready():
 	fade_out()
 	load_table()
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("ui_accept"):
-		super_win()
+#чит-код на прохождение :З
+#func _unhandled_input(event):
+#	if Input.is_action_just_pressed("ui_accept"):
+#		super_win()
 
 func set_index_win(var value: int, var win):
 	for i in 5:
 		var chip = get_node("Grid/CHIP_" + value as String + "_"+i as String)
-		print("win = " + win as String)
 		chip.modulate.r += 0.3*win
 		chip.modulate.g += 0.3*win
 		chip.modulate.b += 0.3*win
@@ -59,6 +59,10 @@ func fade_in():
 
 func load_table():
 	var f = File.new()
+	if !f.file_exists(scoreTablePath):
+		f.open(scoreTablePath, File.WRITE)
+		f.store_line(to_json(scoreTable))
+		f.close()
 	f.open(scoreTablePath, File.READ)
 	var json = JSON.parse(f.get_as_text())
 	f.close()

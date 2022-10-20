@@ -12,7 +12,7 @@ config_version=4
 
 config/name="Test_LGAcademy"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Chips/img/Chip-01.png"
 
 [autoload]
 
