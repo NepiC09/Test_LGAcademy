@@ -36,4 +36,4 @@ func set_random():
 		add_child(chip)
 		chip.position = pivot.position 
 		pivot.nodeType = "CHIP_" + targets[j] as String
-	
+

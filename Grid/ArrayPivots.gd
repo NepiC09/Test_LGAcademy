@@ -33,3 +33,11 @@ func set_progress(var value):
 			main.set_index_win(targets[2], -1)
 	if win[0] and win[1] and win[2]:
 		main.super_win()
+
+func set_default():
+	pivots = []
+	index = [0,0,0] #создано для того, чтобы назначить удобные названия фишкам
+	targets = []
+	progress = [0,0,0]
+	win = [false,false,false]
+	main = null
