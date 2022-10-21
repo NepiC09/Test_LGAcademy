@@ -23,7 +23,10 @@ var arrayPivots = ArrayPivots
 var pos = Vector2.ZERO
 var mouse_pos = Vector2.ZERO
 var mouse_moving = false
+var blocked = false
 var selected = false
+var dragging = false
+var old_global_position
 
 func set_texture(var num):
 	match num:
@@ -49,6 +52,9 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _process(delta):
+	if dragging:
+		global_position = get_global_mouse_position()
+	
 	var input_direction: Vector2
 	if mouse_pos != Vector2.ZERO:
 		input_direction = mouse_pos
@@ -74,7 +80,6 @@ func get_input_direction():
 
 func move(var target, var direction):
 	set_process(false)
-	
 	check_mission(pos.x, -1)
 	
 	animationPlayer.play("Walk")
@@ -87,7 +92,7 @@ func move(var target, var direction):
 	target.nodeType = type as String
 	
 	check_mission(pos.x, 1)
-	
+	old_global_position = global_position
 	set_process(true)
 
 func check_mission(var index, var value):
@@ -109,18 +114,25 @@ func bloom():
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("l_mouse") and timer.is_stopped() and selected == false:
+	if Input.is_action_just_pressed("l_mouse") and timer.is_stopped() and selected == false and !blocked:
 		if arrayPivots.chip_selected != null:
 			arrayPivots.chip_selected.selected(false)
 			arrayPivots.chip_selected = self
 		else:
 			ArrayPivots.chip_selected = self
 		selected(true)
+#		old_global_position = global_position
+#		dragging = false
 		timer.start()
+	if Input.is_action_just_pressed("l_mouse"):
+		old_global_position = global_position
+		dragging = true
 
 # warning-ignore:unused_argument
 func _unhandled_input(event):
 	if Input.is_action_just_released("l_mouse") and selected == true and timer.is_stopped():
+		global_position = old_global_position
+		dragging = false
 		get_mouse_pos()
 		timer.start()
 
@@ -144,8 +156,7 @@ func selected(value):
 
 func get_mouse_pos():
 	mouse_pos = (get_global_mouse_position() - position2D.global_position)/108
-	var radius = 2
-	print(mouse_pos)
+	var radius = 200
 	if mouse_pos.x > radius or mouse_pos.x < -radius or mouse_pos.y > radius or mouse_pos.y < -radius:
 		mouse_pos = Vector2.ZERO
 		selected(false)

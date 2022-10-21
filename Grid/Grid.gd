@@ -36,6 +36,7 @@ func set_random():
 		var pivot = get_node(j as String)
 		add_child(chip)
 		chip.position = pivot.position 
+		chip.blocked = true
 		pivot.first_set = 1
 		pivot.nodeType = "CHIP_" + targets[j] as String
 

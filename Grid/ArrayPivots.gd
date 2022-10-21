@@ -42,3 +42,4 @@ func set_default():
 	progress = [0,0,0]
 	win = [false,false,false]
 	main = null
+	chip_selected = null
