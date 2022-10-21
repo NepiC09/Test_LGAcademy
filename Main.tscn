@@ -296,14 +296,14 @@ margin_bottom = 20.0
 
 [node name="TextBackground" type="Polygon2D" parent="WinWindow/TextContainer"]
 position = Vector2( -252, -60 )
-scale = Vector2( 0.425, 0.222222 )
-color = Color( 0.145098, 0.184314, 0.25098, 0.87451 )
+scale = Vector2( 0.3875, 0.222222 )
+color = Color( 0.270588, 0.694118, 0.286275, 0.513726 )
 polygon = PoolVector2Array( 0, 0, 1280, 0, 1280, 312, 1280, 720, 0, 720 )
 
 [node name="TextLabel" type="Label" parent="WinWindow/TextContainer"]
-margin_left = -236.0
+margin_left = -243.0
 margin_top = -44.0
-margin_right = 242.0
+margin_right = 235.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Thank you!
@@ -318,14 +318,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -272.0
 margin_top = 32.0
-margin_right = 272.0
+margin_right = 224.0
 margin_bottom = 79.0
 custom_colors/font_color_disabled = Color( 0.635294, 0.854902, 0.501961, 1 )
 custom_colors/font_color_focus = Color( 0.788235, 0.988235, 0.670588, 1 )
 custom_colors/font_color = Color( 0.635294, 0.854902, 0.501961, 1 )
 custom_colors/font_color_hover = Color( 0.788235, 0.988235, 0.670588, 1 )
 custom_colors/font_color_pressed = Color( 0.811765, 0.431373, 0.431373, 1 )
-text = "Restart"
+text = "Next level"
 
 [node name="ScoreTable" type="Control" parent="WinWindow"]
 margin_right = 40.0
@@ -377,7 +377,6 @@ text = "Time: 00:00"
 
 [node name="Timer" type="Timer" parent="TimeContainer"]
 pause_mode = 1
-autostart = true
 
 [connection signal="pressed" from="WinWindow/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="timeout" from="TimeContainer/Timer" to="TimeContainer" method="_on_Timer_timeout"]

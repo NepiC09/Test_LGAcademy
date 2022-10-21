@@ -7,6 +7,7 @@ var targets: Array = []
 var progress: Array = [0,0,0] setget set_progress
 var win: Array = [false,false,false]
 var main = null
+var chip_selected = null
 
 func set_progress(var value):
 	progress = value

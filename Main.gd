@@ -73,3 +73,7 @@ func save_table():
 	f.open(scoreTablePath, File.WRITE)
 	f.store_line(to_json(scoreTable))
 	f.close()
+
+func _start_timer():
+	if timeContainer.timer.is_stopped():
+		timeContainer.timer.start()

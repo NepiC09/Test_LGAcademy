@@ -13,7 +13,6 @@ func _on_Timer_timeout():
 	if time_sec == 60:
 		time_sec = 0
 		time_min += 1
-	
 	if time_sec < 10:
 		time_sec_string = "0" + time_sec as String
 	else:
