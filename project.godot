@@ -16,7 +16,7 @@ config/icon="res://Chips/img/Chip-01.png"
 
 [autoload]
 
-ArrayPivots="*res://Grid/ArrayPivots.tscn"
+Globals="*res://Global/Globals.tscn"
 
 [display]
 

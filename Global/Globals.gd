@@ -1,14 +1,15 @@
 extends Node2D
 
-var pivots: Array
+var pivots: Array #массив точек
 
-var index: Array = [0,0,0] #создано для того, чтобы назначить удобные названия фишкам
-var targets: Array = []
-var progress: Array = [0,0,0] setget set_progress
-var win: Array = [false,false,false]
-var main = null
-var chip_selected = null
+var index: Array = [0,0,0] #для удобного названия фишек (чтобы искать по названию, а не через дополнительные массивы)
+var targets: Array = [] #массив целевых фишек
+var progress: Array = [0,0,0] setget set_progress #массив заполненности вертикалей
+var win: Array = [false,false,false] #массив полного заполнения вертикалей
+var main = null #указатель на мейн сцену
+var chip_selected = null #указатель на выбранную фишку (для того, чтобы выбрать ТОЛЬКО 1 фишку) 
 
+#установка заполненности вертикали
 func set_progress(var value):
 	progress = value
 	if main != null:
@@ -35,6 +36,7 @@ func set_progress(var value):
 	if win[0] and win[1] and win[2]:
 		main.super_win()
 
+#сброс всех глобальных данных
 func set_default():
 	pivots = []
 	index = [0,0,0] #создано для того, чтобы назначить удобные названия фишкам
