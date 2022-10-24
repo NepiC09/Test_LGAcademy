@@ -47,6 +47,7 @@ func _on_RestartButton_pressed():
 	get_tree().paused = false
 	fade_in()
 	globals.set_default()
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
 
 #плавный выход из тьмы, мой загадочный друг
